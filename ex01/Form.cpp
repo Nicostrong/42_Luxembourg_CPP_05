@@ -6,11 +6,12 @@
 /*   By: nfordoxc <nfordoxc@42luxembourg.lu>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 11:09:42 by nfordoxc          #+#    #+#             */
-/*   Updated: 2025/02/21 14:09:29 by nfordoxc         ###   Luxembourg.lu     */
+/*   Updated: 2025/02/21 14:30:52 by nfordoxc         ###   Luxembourg.lu     */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
+#include "Bureaucrat.hpp"
 
 /*******************************************************************************
  *							CANONICAL FORM									   *
@@ -137,23 +138,11 @@ int	Form::getGradeToExecute( void ) const
  */
 void	Form::beSigned( Bureaucrat const &bureaucrat )
 {
+	if (this->_isSigned)
+		return ;
 	if (bureaucrat.getGrade() > this->_gradeToSign)
 		throw Form::GradeTooLowException();
-	if (this->_isSigned)
-	{
-		std::cout	<< "The Form with the name "
-					<< this->_name
-					<< " is already signed."
-					<< std::endl;
-		return ;
-	}
 	this->_isSigned = true;
-	std::cout	<< "The Form with the name "
-				<< this->_name
-				<< " has been signed by "
-				<< bureaucrat.getName()
-				<< "."
-				<< std::endl;
 	return ;
 }	
 

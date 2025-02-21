@@ -6,11 +6,12 @@
 /*   By: nfordoxc <nfordoxc@42luxembourg.lu>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:58:39 by nfordoxc          #+#    #+#             */
-/*   Updated: 2025/02/21 13:49:30 by nfordoxc         ###   Luxembourg.lu     */
+/*   Updated: 2025/02/21 14:32:12 by nfordoxc         ###   Luxembourg.lu     */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 /*******************************************************************************
  *							CANONICAL FORM									   *
@@ -141,6 +142,41 @@ void			Bureaucrat::decGrade( void )
 		std::cerr << e.what() << std::endl;
 	}
 	return ;
+}
+
+/*
+ *	sigForm
+ */
+void		Bureaucrat::signForm( Form &form ) const
+{
+	try
+	{
+		if (form.getIsSigned())
+		{
+			std::cout	<< "Bureaucrat "
+						<< this->getName()
+						<< " can't sign form "
+						<< form.getName()
+						<< " because it's already signed."
+						<< std::endl;
+			return ;
+		}
+		form.beSigned(*this);
+		std::cout	<< "Bureaucrat "
+					<< this->getName()
+					<< " signs form "
+					<< form.getName()
+					<< std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cout	<< "Bureaucrat "
+					<< this->getName()
+					<< " can't sign form "
+					<< form.getName()
+					<< std::endl;
+	}
+	
 }
 
 /*******************************************************************************

@@ -6,7 +6,7 @@
 /*   By: nfordoxc <nfordoxc@42luxembourg.lu>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:58:10 by nfordoxc          #+#    #+#             */
-/*   Updated: 2025/02/21 14:14:19 by nfordoxc         ###   Luxembourg.lu     */
+/*   Updated: 2025/02/21 14:30:09 by nfordoxc         ###   Luxembourg.lu     */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,5 +182,23 @@ int	main( void )
 	{
 		std::cerr << e.what() << std::endl;
 	}
-	return 0;
+
+	std::cout	<< BLUE
+				<< "********** Test Sign Form **********"
+				<< RESET
+				<< std::endl;
+	Bureaucrat alice("Alice", 50);
+	Bureaucrat bob("Bob", 20);
+	Form contract("Contract", 30, 40);
+
+	std::cout << alice << std::endl;
+	std::cout << bob << std::endl;
+	std::cout << contract << std::endl;
+	std::cout << "Alice can't sign the form..." << std::endl;
+	alice.signForm(contract);
+	std::cout << "Bob can sign the form..." << std::endl;
+	bob.signForm(contract);
+	std::cout << "Bob sign the form again..." << std::endl;
+	bob.signForm(contract);
+	return (0);
 }

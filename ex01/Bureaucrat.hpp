@@ -6,7 +6,7 @@
 /*   By: nfordoxc <nfordoxc@42luxembourg.lu>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:58:28 by nfordoxc          #+#    #+#             */
-/*   Updated: 2025/02/21 13:49:30 by nfordoxc         ###   Luxembourg.lu     */
+/*   Updated: 2025/02/21 14:21:48 by nfordoxc         ###   Luxembourg.lu     */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 # define YELLOW		"\033[33m"
 # define BLUE		"\033[34m"
 # define MAGENTA	"\033[35m"
+
+class	Form;
 
 class	Bureaucrat
 {
@@ -49,6 +51,7 @@ class	Bureaucrat
 			/*	Methode	*/
 			void		incGrade( void );
 			void		decGrade( void );
+			void		signForm( Form &form ) const;
 
 			/*	class Exception	*/
 			class	GradeTooHighException : public std::exception
