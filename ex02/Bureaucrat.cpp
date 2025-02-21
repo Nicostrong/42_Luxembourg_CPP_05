@@ -6,16 +6,16 @@
 /*   By: nfordoxc <nfordoxc@42luxembourg.lu>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:58:39 by nfordoxc          #+#    #+#             */
-/*   Updated: 2025/02/21 16:06:05 by nfordoxc         ###   Luxembourg.lu     */
+/*   Updated: 2025/02/21 18:30:39 by nfordoxc         ###   Luxembourg.lu     */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "AForm.hpp"
 
 /*******************************************************************************
  *							CANONICAL FORM									   *
  ******************************************************************************/
-
 
 /*
  *	Constructor with parameter
@@ -24,7 +24,7 @@ Bureaucrat::Bureaucrat( std::string const name, int grade ) : _name(name)
 {
 	std::cout	<< "Bureaucrat constructor with name " << _name
 				<< " and with grade " << grade
-				<< " called."  << std::endl;
+				<< " called." << std::endl;
 	if (grade < 1)
 		throw Bureaucrat::GradeTooHighException();
 	else if (grade > 150)
@@ -118,12 +118,57 @@ void			Bureaucrat::decGrade( void )
 	return ;
 }
 
+/*
+ *	sigForm
+ */
+void		Bureaucrat::signForm( AForm &form ) const
+{
+	try
+	{
+		if (form.getIsSigned())
+		{
+			std::cout	<< "Bureaucrat " << this->getName()
+						<< " can't sign form " << form.getName()
+						<< " because it's already signed."
+						<< std::endl;
+			return ;
+		}
+		form.beSigned(*this);
+	}
+	catch(const std::exception& e)
+	{
+		std::cout	<< "Bureaucrat " << this->getName()
+					<< " can't sign form " << form.getName()
+					<< " because " << e.what()
+					<< std::endl;
+	}
+	
+}
+
+/*
+ *	executeForm
+ */
+void	Bureaucrat::executeForm( AForm const &form ) const
+{
+	try
+	{
+		form.execute(*this);
+	}
+	catch(const std::exception& e)
+	{
+		std::cout	<< "Bureaucrat " << this->getName()
+					<< " can't execute form " << form.getName()
+					<< " because " << e.what()
+					<< std::endl;
+	}
+}
+
 /*******************************************************************************
  *								EXCEPTION 									   *
  ******************************************************************************/
 
 /*
- *	Exception GradeTooHightException	
+ *	Exception GradeTooHighException	
  */
 const char		*Bureaucrat::GradeTooHighException::what() const throw()
 {
@@ -149,7 +194,8 @@ const char		*Bureaucrat::GradeTooLowException::what() const throw()
 std::ostream	&operator<<( std::ostream &out, Bureaucrat const &src_object )
 {
 	out	<< src_object.getName()
-		<< ", bureaucrat grade "
-		<< src_object.getGrade();
+		<< ", bureaucrat of grade "
+		<< src_object.getGrade()
+		<< "." << std::endl;
 	return (out);
 }
