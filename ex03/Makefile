@@ -74,6 +74,8 @@ OBJ				=	$(SRC:.cpp=.o)
 
 NAME			=	Intern
 
+FILE			=	Garden_shrubbery
+
 ################################################################################
 #	Bonus part																   #
 ################################################################################
@@ -232,5 +234,6 @@ clean:
 
 fclean: 	clean
 	$(call delete_file, $(NAME))
+	$(call delete_file, $(FILE))
 
 re : 		fclean all
