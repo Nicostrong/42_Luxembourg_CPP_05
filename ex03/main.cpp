@@ -6,7 +6,7 @@
 /*   By: nfordoxc <nfordoxc@42luxembourg.lu>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:58:10 by nfordoxc          #+#    #+#             */
-/*   Updated: 2025/02/22 11:27:05 by nfordoxc         ###   Luxembourg.lu     */
+/*   Updated: 2025/02/26 08:13:40 by nfordoxc         ###   Luxembourg.lu     */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,13 @@ int	main( void )
 	std::cout << RED;
 	if (!form4)
 		std::cout << "Form 4 creation failed as expected (empty form name)." << std::endl;
+	else
+		delete form4;
 
 	if (!form5)
 		std::cout << "Form 5 creation failed as expected (invalid form name)." << std::endl;
+	else
+		delete form5;
 	std::cout << RESET;
 
 	std::cout	<< BLUE
@@ -87,7 +91,7 @@ int	main( void )
 		{
 			std::cerr << RED << e.what() << RESET << std::endl;
 		}
-		
+		delete form6;
 	}
 	if (form7)
 	{
@@ -100,7 +104,7 @@ int	main( void )
 		{
 			std::cerr << RED << e.what() << RESET << std::endl;
 		}
-		
+		delete form7;
 	}
 	if (form8)
 	{
@@ -113,7 +117,7 @@ int	main( void )
 		{
 			std::cerr << RED << e.what() << RESET << std::endl;
 		}
-		
+		delete form8;
 	}
 
 	std::cout	<< BLUE
@@ -139,5 +143,5 @@ int	main( void )
 				<< RESET
 				<< std::endl;
 
-	return 0;
+	return (0);
 }
