@@ -6,7 +6,7 @@
 /*   By: nfordoxc <nfordoxc@42luxembourg.lu>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 11:09:42 by nfordoxc          #+#    #+#             */
-/*   Updated: 2025/03/11 12:17:18 by nfordoxc         ###   Luxembourg.lu     */
+/*   Updated: 2025/03/11 16:01:10 by nfordoxc         ###   Luxembourg.lu     */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ void			Form::beSigned( Bureaucrat const &bureaucrat )
 {
 	if (this->_isSigned)
 	{
-		std::cout << "the form is Already signed !" << std::endl;
+		std::cout << "the form " << this->_name << " is Already signed !" << std::endl;
 		return ;
 	}
 	if (bureaucrat.getGrade() > this->_gradeToSign)

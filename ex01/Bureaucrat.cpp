@@ -6,7 +6,7 @@
 /*   By: nfordoxc <nfordoxc@42luxembourg.lu>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:58:39 by nfordoxc          #+#    #+#             */
-/*   Updated: 2025/03/11 15:33:15 by nfordoxc         ###   Luxembourg.lu     */
+/*   Updated: 2025/03/11 16:20:38 by nfordoxc         ###   Luxembourg.lu     */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,12 +121,18 @@ void			Bureaucrat::decGrade( void )
  */
 void		Bureaucrat::signForm( Form &form ) const
 {
+	bool	isSigned = form.getIsSigned();
+
 	try
 	{
 		form.beSigned(*this);
+		if (!isSigned)
+		{
 		std::cout	<< GREEN << this->getName()
 					<< " signed " << form.getName()
 					<< RESET << std::endl;
+		}
+		return ;
 	}
 	catch(const std::exception& e)
 	{
@@ -135,7 +141,6 @@ void		Bureaucrat::signForm( Form &form ) const
 					<< " because " << e.what()
 					<< RESET << std::endl;
 	}
-	return ;
 }
 
 /*******************************************************************************
