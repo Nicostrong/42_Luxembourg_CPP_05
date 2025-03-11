@@ -6,7 +6,7 @@
 /*   By: nfordoxc <nfordoxc@42luxembourg.lu>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 11:09:32 by nfordoxc          #+#    #+#             */
-/*   Updated: 2025/02/21 14:25:38 by nfordoxc         ###   Luxembourg.lu     */
+/*   Updated: 2025/03/11 12:17:18 by nfordoxc         ###   Luxembourg.lu     */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ class	Form
 {
 	private:
 
-		std::string	_name;
-		bool		_isSigned;
-		const int	_gradeToSign;
-		const int	_gradeToExecute;
+		const std::string	_name;
+		bool				_isSigned;
+		const int			_gradeToSign;
+		const int			_gradeToExecute;
 
 		/*	Assignment forbidden	*/
 		Form &operator=( Form const &src_object );
@@ -39,13 +39,13 @@ class	Form
 		~Form( void );
 
 		/*	Getter	*/
-		std::string	getName( void ) const;
-		bool		getIsSigned( void ) const;
-		int			getGradeToSign( void ) const;
-		int			getGradeToExecute( void ) const;
+		std::string		getName( void ) const;
+		bool			getIsSigned( void ) const;
+		int				getGradeToSign( void ) const;
+		int				getGradeToExecute( void ) const;
 		
 		/*	Method	*/
-		void		beSigned( Bureaucrat const &bureaucrat );
+		void			beSigned( Bureaucrat const &bureaucrat );
 
 		/*	class Exception	*/
 		class	GradeTooHighException : public std::exception
