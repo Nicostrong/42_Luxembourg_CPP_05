@@ -6,7 +6,7 @@
 /*   By: nfordoxc <nfordoxc@42luxembourg.lu>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:58:10 by nfordoxc          #+#    #+#             */
-/*   Updated: 2025/03/11 12:15:18 by nfordoxc         ###   Luxembourg.lu     */
+/*   Updated: 2025/03/11 12:30:52 by nfordoxc         ###   Luxembourg.lu     */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,15 +124,18 @@ int		main( void )
 	/*
 	try
 	{
-		Form f4("Invoisse", 30, 40);
-		Form f5("Invoice", 30, 40);
-		f4 = f5;
+		Form		f6("Invoisse", 30, 40);
+		std::cout	<< f6 << std::endl;
+		Form		f7("Invoice", 30, 40);
+		std::cout	<< f7 << std::endl;
+		f6 = f7;
+		std::cout	<< f6 << std::endl;
 	}
 	catch (std::exception &e)
 	{
 		std::cerr << e.what() << std::endl;
-	}*/
-
+	}
+	*/
 	std::cout	<< BLUE
 				<< "********** Test Form signing **********"
 				<< RESET
@@ -220,6 +223,6 @@ int		main( void )
 	bob.signForm(contract);
 	std::cout	<< "Bob sign the form again..." << std::endl;
 	bob.signForm(contract);
-	
+
 	return (0);
 }
