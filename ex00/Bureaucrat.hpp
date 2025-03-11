@@ -6,7 +6,7 @@
 /*   By: nfordoxc <nfordoxc@42luxembourg.lu>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:58:28 by nfordoxc          #+#    #+#             */
-/*   Updated: 2025/02/21 13:48:48 by nfordoxc         ###   Luxembourg.lu     */
+/*   Updated: 2025/03/11 11:19:10 by nfordoxc         ###   Luxembourg.lu     */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ class	Bureaucrat
 					const char	*what() const throw();
 			
 			};
+
 };
 
 std::ostream	&operator<<( std::ostream &out, Bureaucrat const &src_object); 

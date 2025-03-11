@@ -6,7 +6,7 @@
 /*   By: nfordoxc <nfordoxc@42luxembourg.lu>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:58:39 by nfordoxc          #+#    #+#             */
-/*   Updated: 2025/02/21 16:06:05 by nfordoxc         ###   Luxembourg.lu     */
+/*   Updated: 2025/03/11 11:19:01 by nfordoxc         ###   Luxembourg.lu     */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,20 @@
  *							CANONICAL FORM									   *
  ******************************************************************************/
 
-
 /*
  *	Constructor with parameter
  */
 Bureaucrat::Bureaucrat( std::string const name, int grade ) : _name(name)
 {
-	std::cout	<< "Bureaucrat constructor with name " << _name
-				<< " and with grade " << grade
-				<< " called."  << std::endl;
 	if (grade < 1)
 		throw Bureaucrat::GradeTooHighException();
 	else if (grade > 150)
 		throw Bureaucrat::GradeTooLowException();
 	else
 		_grade = grade;
+	std::cout	<< "Bureaucrat constructor with name " << _name
+				<< " and with grade " << grade
+				<< " called."  << std::endl;
 	return ;
 }
 
@@ -87,7 +86,7 @@ std::string		Bureaucrat::getName( void ) const
 /*
  *	getGrade
  */
-int	Bureaucrat::getGrade( void ) const
+int				Bureaucrat::getGrade( void ) const
 {
 	return (this->_grade);
 }
@@ -141,7 +140,6 @@ const char		*Bureaucrat::GradeTooLowException::what() const throw()
 /*******************************************************************************
  *								OUTSTREAM									   *
  ******************************************************************************/
-
 
 /*
  *	output stream operator
