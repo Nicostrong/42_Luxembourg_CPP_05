@@ -6,7 +6,7 @@
 /*   By: nfordoxc <nfordoxc@42luxembourg.lu>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 11:09:42 by nfordoxc          #+#    #+#             */
-/*   Updated: 2025/02/21 18:39:18 by nfordoxc         ###   Luxembourg.lu     */
+/*   Updated: 2025/03/11 16:00:39 by nfordoxc         ###   Luxembourg.lu     */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 /*******************************************************************************
  *							CANONICAL FORM									   *
  ******************************************************************************/
-
 
 /*
  *	Constructor with parameter
@@ -43,14 +42,15 @@ AForm::AForm(	std::string name, \
 									_gradeToSign(gradeToSign), \
 									_gradeToExecute(gradeToExecute)
 {
-	std::cout	<< "AForm constructor with name " << _name
-				<< " and with grade to sign " << _gradeToSign
-				<< " and with grade to execute " << _gradeToExecute
-				<< " called." << std::endl;
 	if (gradeToSign < 1 || gradeToExecute < 1)
 		throw AForm::GradeTooHighException();
 	else if (gradeToSign > 150 || gradeToExecute > 150)
 		throw AForm::GradeTooLowException();
+	
+	std::cout	<< "AForm constructor with name " << _name
+				<< " and with grade to sign " << _gradeToSign
+				<< " and with grade to execute " << _gradeToExecute
+				<< " called." << std::endl;
 	return ;
 }
 
@@ -74,8 +74,7 @@ AForm::AForm( AForm const &src_object ) :	_name(src_object._name), \
  */
 AForm::~AForm( void )
 {
-	std::cout	<< "AForm with name " << this->_name
-				<< " is destructed." << std::endl;
+	std::cout	<< "AForm with name " << this->_name << " is destructed." << std::endl;
 	return ;
 }
 
@@ -94,7 +93,7 @@ std::string		AForm::getName( void ) const
 /*
  *	getIsSigned
  */
-bool	AForm::getIsSigned( void ) const
+bool			AForm::getIsSigned( void ) const
 {
 	return (this->_isSigned);
 }
@@ -102,7 +101,7 @@ bool	AForm::getIsSigned( void ) const
 /*
  *	getGradeToSign
  */
-int	AForm::getGradeToSign( void ) const
+int				AForm::getGradeToSign( void ) const
 {
 	return (this->_gradeToSign);
 }
@@ -110,7 +109,7 @@ int	AForm::getGradeToSign( void ) const
 /*
  *	getGradeToExecute
  */
-int	AForm::getGradeToExecute( void ) const
+int				AForm::getGradeToExecute( void ) const
 {
 	return (this->_gradeToExecute);
 }
@@ -122,20 +121,16 @@ int	AForm::getGradeToExecute( void ) const
 /*
  *	beSigned
  */
-void	AForm::beSigned( Bureaucrat const &bureaucrat )
+void			AForm::beSigned( Bureaucrat const &bureaucrat )
 {
 	if (this->_isSigned)
 	{
-		std::cout	<< "The form with the name " << this->_name
-					<< " is already signed." << std::endl;
+		std::cout << "the form " << this->_name << " is Already signed !" << std::endl;
 		return ;
 	}
 	if (bureaucrat.getGrade() > this->_gradeToSign)
 		throw AForm::GradeTooLowException();
 	this->_isSigned = true;
-	std::cout	<< "Bureaucrat " << bureaucrat.getName()
-				<< " signs form " << this->getName()
-				<< "." << std::endl;
 	return ;
 }	
 
@@ -148,7 +143,7 @@ void	AForm::beSigned( Bureaucrat const &bureaucrat )
  */
 const char		*AForm::GradeTooHighException::what() const throw()
 {
-	return  (RED"AForm Exception:\tGrade too high !"RESET);
+	return  (RED"Grade too high !"RESET);
 }
 
 /*
@@ -156,7 +151,7 @@ const char		*AForm::GradeTooHighException::what() const throw()
  */
 const char		*AForm::GradeTooLowException::what() const throw()
 {
-	return  (RED"AForm Exception:\tGrade too low !"RESET);
+	return  (RED"Grade too low !"RESET);
 }
 
 /*
@@ -164,7 +159,7 @@ const char		*AForm::GradeTooLowException::what() const throw()
  */
 const char		*AForm::FormNotSignedException::what() const throw()
 {
-	return (RED"AForm Exception:\tForm not signed !"RESET);
+	return (RED"Form not signed !"RESET);
 }
 
 /*******************************************************************************

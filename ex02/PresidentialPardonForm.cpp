@@ -6,7 +6,7 @@
 /*   By: nfordoxc <nfordoxc@42luxembourg.lu>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 14:41:37 by nfordoxc          #+#    #+#             */
-/*   Updated: 2025/02/21 18:38:04 by nfordoxc         ###   Luxembourg.lu     */
+/*   Updated: 2025/03/11 15:44:13 by nfordoxc         ###   Luxembourg.lu     */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,6 @@ void	PresidentialPardonForm::execute( Bureaucrat const &executor ) const
 		throw AForm::FormNotSignedException();
 	if (executor.getGrade() > getGradeToExecute())
 		throw AForm::GradeTooLowException();
-	std::cout << _target << " has been pardoned by Zaphod Beeblebrox." << std::endl;
+	std::cout << this->_target << " has been pardoned by Zaphod Beeblebrox." << std::endl;
 	return ;
 }
