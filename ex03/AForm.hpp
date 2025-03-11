@@ -6,7 +6,7 @@
 /*   By: nfordoxc <nfordoxc@42luxembourg.lu>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 11:09:32 by nfordoxc          #+#    #+#             */
-/*   Updated: 2025/02/21 15:03:29 by nfordoxc         ###   Luxembourg.lu     */
+/*   Updated: 2025/03/11 15:31:39 by nfordoxc         ###   Luxembourg.lu     */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ class	AForm
 {
 	private:
 
-		std::string	_name;
-		bool		_isSigned;
-		const int	_gradeToSign;
-		const int	_gradeToExecute;
+		const std::string	_name;
+		bool				_isSigned;
+		const int			_gradeToSign;
+		const int			_gradeToExecute;
 
 		/*	Assignment forbidden	*/
-		AForm 			&operator=( AForm const &src_object );
+		AForm 				&operator=( AForm const &src_object );
 
 	public:
 
@@ -39,14 +39,14 @@ class	AForm
 		virtual ~AForm( void );
 
 		/*	Getter	*/
-		std::string		getName( void ) const;
-		bool			getIsSigned( void ) const;
-		int				getGradeToSign( void ) const;
-		int				getGradeToExecute( void ) const;
+		std::string			getName( void ) const;
+		bool				getIsSigned( void ) const;
+		int					getGradeToSign( void ) const;
+		int					getGradeToExecute( void ) const;
 		
 		/*	Method	*/
-		void			beSigned( Bureaucrat const &bureaucrat );
-		virtual void	execute( Bureaucrat const &executor ) const = 0;
+		void				beSigned( Bureaucrat const &bureaucrat );
+		virtual void		execute( Bureaucrat const &executor ) const = 0;
 
 		/*	class Exception	*/
 		class	GradeTooHighException : public std::exception

@@ -6,7 +6,7 @@
 /*   By: nfordoxc <nfordoxc@42luxembourg.lu>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 14:40:55 by nfordoxc          #+#    #+#             */
-/*   Updated: 2025/02/21 18:38:04 by nfordoxc         ###   Luxembourg.lu     */
+/*   Updated: 2025/03/11 15:44:33 by nfordoxc         ###   Luxembourg.lu     */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,17 +84,8 @@ void	RobotomyRequestForm::execute( Bureaucrat const &executor ) const
 		throw AForm::GradeTooLowException();
 	std::cout << "TIIIIIITTT... TUUUUTTT.... (robot noise)" << std::endl;
 	if (std::rand() % 2)
-	{
-		std::cout	<< _target
-					<< " has been robotomized successfully!"
-					<< std::endl;
-	}
+		std::cout << this->_target << " has been robotomized successfully!" << std::endl;
 	else
-	{
-		std::cout	<< "Robotomy failed on "
-					<< _target
-					<< "."
-					<< std::endl;
-	}
+		std::cout << "Robotomy failed on " << this->_target << std::endl;
 	return ;
 }

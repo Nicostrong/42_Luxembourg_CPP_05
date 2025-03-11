@@ -6,7 +6,7 @@
 /*   By: nfordoxc <nfordoxc@42luxembourg.lu>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:58:10 by nfordoxc          #+#    #+#             */
-/*   Updated: 2025/02/26 08:13:40 by nfordoxc         ###   Luxembourg.lu     */
+/*   Updated: 2025/03/11 16:41:33 by nfordoxc         ###   Luxembourg.lu     */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,6 +142,5 @@ int	main( void )
 				<< "********** End of tests **********"
 				<< RESET
 				<< std::endl;
-
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: nfordoxc <nfordoxc@42luxembourg.lu>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:58:39 by nfordoxc          #+#    #+#             */
-/*   Updated: 2025/02/21 18:30:39 by nfordoxc         ###   Luxembourg.lu     */
+/*   Updated: 2025/03/11 16:19:39 by nfordoxc         ###   Luxembourg.lu     */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,14 @@
  */
 Bureaucrat::Bureaucrat( std::string const name, int grade ) : _name(name)
 {
-	std::cout	<< "Bureaucrat constructor with name " << _name
-				<< " and with grade " << grade
-				<< " called." << std::endl;
 	if (grade < 1)
 		throw Bureaucrat::GradeTooHighException();
-	else if (grade > 150)
+	if (grade > 150)
 		throw Bureaucrat::GradeTooLowException();
-	else
-		_grade = grade;
+	_grade = grade;
+	std::cout	<< "Bureaucrat constructor with name " << _name
+			<< " and with grade " << grade
+			<< " called." << std::endl;
 	return ;
 }
 
@@ -51,8 +50,7 @@ Bureaucrat::Bureaucrat( Bureaucrat const & src_object ) :	_name(src_object._name
  */
 Bureaucrat::~Bureaucrat( void )
 {
-	std::cout	<< "Bureaucrat with name " << this->_name
-				<< " is destructed." << std::endl;
+	std::cout	<< "Bureaucrat with name " << this->_name << " is destructed." << std::endl;
 	return ;
 }
 
@@ -87,7 +85,7 @@ std::string		Bureaucrat::getName( void ) const
 /*
  *	getGrade
  */
-int	Bureaucrat::getGrade( void ) const
+int				Bureaucrat::getGrade( void ) const
 {
 	return (this->_grade);
 }
@@ -123,26 +121,26 @@ void			Bureaucrat::decGrade( void )
  */
 void		Bureaucrat::signForm( AForm &form ) const
 {
+	bool	isSigned = form.getIsSigned();
+
 	try
 	{
-		if (form.getIsSigned())
-		{
-			std::cout	<< "Bureaucrat " << this->getName()
-						<< " can't sign form " << form.getName()
-						<< " because it's already signed."
-						<< std::endl;
-			return ;
-		}
 		form.beSigned(*this);
+		if (!isSigned)
+		{
+		std::cout	<< GREEN << this->getName()
+					<< " signed " << form.getName()
+					<< RESET << std::endl;
+		}
+		return ;
 	}
 	catch(const std::exception& e)
 	{
-		std::cout	<< "Bureaucrat " << this->getName()
-					<< " can't sign form " << form.getName()
+		std::cout	<< RED << this->getName()
+					<< " couldn't sign  " << form.getName()
 					<< " because " << e.what()
-					<< std::endl;
+					<< RESET << std::endl;
 	}
-	
 }
 
 /*
@@ -156,10 +154,10 @@ void	Bureaucrat::executeForm( AForm const &form ) const
 	}
 	catch(const std::exception& e)
 	{
-		std::cout	<< "Bureaucrat " << this->getName()
+		std::cout	<< RED << "Bureaucrat " << this->getName()
 					<< " can't execute form " << form.getName()
 					<< " because " << e.what()
-					<< std::endl;
+					<< RESET << std::endl;
 	}
 }
 
@@ -195,7 +193,6 @@ std::ostream	&operator<<( std::ostream &out, Bureaucrat const &src_object )
 {
 	out	<< src_object.getName()
 		<< ", bureaucrat of grade "
-		<< src_object.getGrade()
-		<< "." << std::endl;
+		<< src_object.getGrade();
 	return (out);
 }
